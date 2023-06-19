@@ -2,7 +2,15 @@
 
 Console.WriteLine("Ejemplo novedades");
 Console.WriteLine("Documentos JSON");
+Console.WriteLine("-----------------------------------");
 HelperJsonClientes helperJson = new HelperJsonClientes();
+List<Cliente> clientesMicrosoft = helperJson.GetClientesMicrosoft();
+foreach (Cliente cliente in clientesMicrosoft)
+{
+    Console.WriteLine(cliente.Nombre);
+}
+
+Console.WriteLine("-----------------------------------");
 List<Cliente> clientesNewton = helperJson.GetClientesNewton();
 foreach (Cliente cliente in clientesNewton)
 {

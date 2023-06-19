@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace NovedadesNetCore.Helpers
@@ -31,8 +32,12 @@ namespace NovedadesNetCore.Helpers
         //CLASES QUE SE LLAMAN IGUAL A LAS DE NEWTON
         public List<Cliente> GetClientesMicrosoft()
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
             List<Cliente> clientes = 
-            System.Text.Json.JsonSerializer.Deserialize<List<Cliente>>(this.jsonClientes);
+                System.Text.Json.JsonSerializer.Deserialize<List<Cliente>>(this.jsonClientes, options);
             return clientes;
         }
     }
