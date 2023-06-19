@@ -5,6 +5,14 @@ using System.Runtime.CompilerServices;
 Console.WriteLine("Ejemplo novedades");
 Console.WriteLine("Lambda");
 HelperLambda helperLambda = new HelperLambda();
+List<int> numeros = helperLambda.GetElementosPaginados();
+foreach (int num in numeros)
+{
+    Console.WriteLine(num);
+}
+
+
+
 List<Persona> personas = helperLambda.GetPersonas();
 foreach (Persona p in personas)
 {

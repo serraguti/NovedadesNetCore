@@ -10,9 +10,16 @@ namespace NovedadesNetCore.Helpers
     public class HelperLambda
     {
         private List<Persona> personasList;
+        private List<int> numerosList;
 
         public HelperLambda()
         {
+            this.numerosList = new List<int>();
+            for (int i = 1; i <= 50; i++)
+            {
+                this.numerosList.Add(i);
+            }
+
             this.personasList = new List<Persona>
             {
                 new Persona {IdPersona = 1, Nombre = "Lucia", Email= "lucia@gmail.com", Edad=21},
@@ -23,6 +30,14 @@ namespace NovedadesNetCore.Helpers
                 new Persona {IdPersona = 6, Nombre = "Pedro", Email= "pedro@gmail.com", Edad=11}
             };
         }
+
+        //METODO TRADICIONAL CON SKIP Y TAKE
+        public List<int> GetElementosPaginados()
+        {
+            var datos = this.numerosList.Skip(0).Take(10).ToList();
+            return datos;
+        }
+
 
         public List<Persona> GetPersonas()
         {
