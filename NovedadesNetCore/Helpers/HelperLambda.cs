@@ -32,9 +32,20 @@ namespace NovedadesNetCore.Helpers
         }
 
         //METODO TRADICIONAL CON SKIP Y TAKE
-        public List<int> GetElementosPaginados()
+        public List<int> GetElementosPaginados
+            (int inicio, int elementos)
         {
-            var datos = this.numerosList.Skip(0).Take(10).ToList();
+            //SKIP ES EL INICIO Y TAKE EL NUMERO DE ELEMENTOS A RECUPERAR
+            var datos = this.numerosList.Skip(inicio).Take(elementos).ToList();
+            return datos;
+        }
+
+        public List<int> GetElementosPaginadosTake
+            (int inicio, int posicion)
+        {
+            //EL METODO TAKE UTILIZA LA POSICION, NO 
+            //EL NUMERO DE ELEMENTOS QUE QUEREMOS
+            var datos = this.numerosList.Take(inicio..posicion).ToList();
             return datos;
         }
 
