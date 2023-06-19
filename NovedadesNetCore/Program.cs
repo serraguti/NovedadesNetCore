@@ -1,21 +1,70 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Microsoft.Extensions.DependencyInjection;
+using NovedadesNetCore;
+using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 
-Console.WriteLine("Ejemplo novedades");
-Console.WriteLine("Documentos JSON");
-Console.WriteLine("-----------------------------------");
-HelperJsonClientes helperJson = new HelperJsonClientes();
-List<Cliente> clientesMicrosoft = helperJson.GetClientesMicrosoft();
-foreach (Cliente cliente in clientesMicrosoft)
-{
-    Console.WriteLine(cliente.Nombre);
-}
+Console.WriteLine("Ejemplo DI/IoC");
+//ME GUSTARIA PODER DECIRLE AL CONTROLADOR QUE OBJETO DEBE UTILIZAR
+//NO TENEMOS CONTENEDOR Y TAMPOCO LO VAMOS A CREAR
+//REALIZAMOS AQUI LA INYECCION
+//CREAMOS UN PROVEEDOR/CONTAINER
+var provider = new ServiceCollection()
+    .AddTransient<Deportivo>()
+    .AddTransient<CocheController>()
+    .BuildServiceProvider();
+//NECESITAMOS PODER RECUPERAR UN CONTROLLER PARA TRABAJAR CON EL
 
-Console.WriteLine("-----------------------------------");
-List<Cliente> clientesNewton = helperJson.GetClientesNewton();
-foreach (Cliente cliente in clientesNewton)
+CocheController controller = provider.GetService<CocheController>();
+string respuesta = "";
+while (respuesta != "0")
 {
-    Console.WriteLine(cliente.Nombre);
+    Console.WriteLine(controller.DescripcionCoche());
+    string datos = "";
+    Console.WriteLine("0.- Salir");
+    Console.WriteLine("1.- Acelerar");
+    Console.WriteLine("2.- Frenar");
+    respuesta = Console.ReadLine();
+    int seleccion = int.Parse(respuesta);
+    if (seleccion == 1)
+    {
+        datos = controller.AcelerarCoche();
+    }
+    else if (seleccion == 2)
+    {
+        datos = controller.FrenarCoche();
+    }
+    else{
+        Console.WriteLine("Hasta luego");
+    }
+    Console.WriteLine(datos);
 }
+Console.WriteLine("Fin de program");
+
+
+//Console.WriteLine("Documentos JSON");
+//Console.WriteLine("-----------------------------------");
+//HelperJsonClientes helperJson = new HelperJsonClientes();
+//List<Cliente> clientesNewton = helperJson.GetClientesNewton();
+//Cliente cliente = clientesNewton[0];
+//string jsonNewton = helperJson.SerializarClienteNewton(cliente);
+//string jsonMicrosoft = helperJson.SerializarClienteMicrosoft(cliente);
+//Console.WriteLine("NEWTON");
+//Console.WriteLine(jsonNewton);
+//Console.WriteLine("-----------------------------------");
+//Console.WriteLine("MICROSOFT");
+//Console.WriteLine(jsonMicrosoft);
+
+//foreach (Cliente cliente in clientesMicrosoft)
+//{
+//    Console.WriteLine(cliente.Nombre + " " + cliente.Imagen);
+//}
+
+//Console.WriteLine("-----------------------------------");
+//List<Cliente> clientesNewton = helperJson.GetClientesNewton();
+//foreach (Cliente cliente in clientesNewton)
+//{
+//    Console.WriteLine(cliente.Nombre + " " + cliente.Imagen);
+//}
 //Console.WriteLine("Ejemplo async/await");
 //string path = @"C:\Users\Serra\Documents\CEDEX\Contacto Curso Cedex.txt";
 //string data = await HelperFiles.ReadFileAsync(path);

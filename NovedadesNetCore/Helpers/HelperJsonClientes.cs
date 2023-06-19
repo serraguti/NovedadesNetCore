@@ -40,5 +40,18 @@ namespace NovedadesNetCore.Helpers
                 System.Text.Json.JsonSerializer.Deserialize<List<Cliente>>(this.jsonClientes, options);
             return clientes;
         }
+
+        public string SerializarClienteNewton(Cliente cliente)
+        {
+            string data = JsonConvert.SerializeObject(cliente);
+            return data;
+        }
+
+        public string SerializarClienteMicrosoft(Cliente cliente)
+        {
+            string data =
+                System.Text.Json.JsonSerializer.Serialize<Cliente>(cliente);
+            return data;
+        }
     }
 }
