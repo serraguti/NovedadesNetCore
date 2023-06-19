@@ -8,9 +8,9 @@ namespace NovedadesNetCore
 {
     public class CocheController
     {
-        private Coche car;
+        private ICoche car;
 
-        public CocheController(Coche car)
+        public CocheController(ICoche car)
         {
             this.car = car;
         }

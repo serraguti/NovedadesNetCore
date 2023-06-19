@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NovedadesNetCore.Models
 {
-    public class Coche
+    public class Coche: ICoche
     {
         public Coche()
         {

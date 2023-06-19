@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NovedadesNetCore.Models
 {
-    public class Deportivo
+    public class Deportivo: ICoche
     {
         public Deportivo()
         {

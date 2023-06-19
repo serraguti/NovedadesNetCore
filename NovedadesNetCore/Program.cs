@@ -9,7 +9,7 @@ Console.WriteLine("Ejemplo DI/IoC");
 //REALIZAMOS AQUI LA INYECCION
 //CREAMOS UN PROVEEDOR/CONTAINER
 var provider = new ServiceCollection()
-    .AddTransient<Deportivo>()
+    .AddTransient<ICoche, Deportivo>()
     .AddTransient<CocheController>()
     .BuildServiceProvider();
 //NECESITAMOS PODER RECUPERAR UN CONTROLLER PARA TRABAJAR CON EL
