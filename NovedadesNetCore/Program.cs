@@ -6,7 +6,7 @@ HelperJsonClientes helperJson = new HelperJsonClientes();
 List<Cliente> clientesNewton = helperJson.GetClientesNewton();
 foreach (Cliente cliente in clientesNewton)
 {
-
+    Console.WriteLine(cliente.Nombre);
 }
 //Console.WriteLine("Ejemplo async/await");
 //string path = @"C:\Users\Serra\Documents\CEDEX\Contacto Curso Cedex.txt";
@@ -41,11 +41,11 @@ foreach (Cliente cliente in clientesNewton)
 
 
 
-List<Persona> personas = helperLambda.GetPersonas();
-foreach (Persona p in personas)
-{
-    Console.WriteLine(p.IdPersona + " - " + p.Nombre);
-}
+//List<Persona> personas = helperLambda.GetPersonas();
+//foreach (Persona p in personas)
+//{
+//    Console.WriteLine(p.IdPersona + " - " + p.Nombre);
+//}
 //Console.WriteLine("Max y MaxBy Lambda");
 //var valor = personas.Max(x => x.Edad);
 //Console.WriteLine("Valor Max: " + valor);
