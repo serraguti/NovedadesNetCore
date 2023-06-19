@@ -26,5 +26,14 @@ namespace NovedadesNetCore.Helpers
                 JsonConvert.DeserializeObject<List<Cliente>>(this.jsonClientes);
             return clientes;
         }
+
+        //DEBEMOS PONER EL NAMESPACE COMPLETO, YA QUE System.Text.Json TIENE 
+        //CLASES QUE SE LLAMAN IGUAL A LAS DE NEWTON
+        public List<Cliente> GetClientesMicrosoft()
+        {
+            List<Cliente> clientes = 
+            System.Text.Json.JsonSerializer.Deserialize<List<Cliente>>(this.jsonClientes);
+            return clientes;
+        }
     }
 }
